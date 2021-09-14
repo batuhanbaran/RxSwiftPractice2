@@ -11,8 +11,8 @@ import RxCocoa
 
 class ViewController: UIViewController {
     
-    @IBOutlet private weak var emailTextField: UITextField!
-    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var emailTextField: AuthTextField!
+    @IBOutlet private weak var passwordTextField: AuthTextField!
     @IBOutlet private weak var loginButton: UIButton!
     let loginVM: LoginViewModel = LoginViewModel()
     let disposeBag = DisposeBag()
@@ -25,16 +25,21 @@ class ViewController: UIViewController {
         setupBindings()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
     private func setupBindings() {
         emailTextField.rx
             .controlEvent(.editingChanged)
             .withLatestFrom(emailTextField.rx.text.orEmpty)
             .bind { text in
-                self.loginVM.emailValid.accept(self.loginVM.isValidEmail(text))
+                self.loginVM.emailValid.accept(text.isValidEmail())
                 if text.isEmpty {
-                    self.emailTextField.layer.borderColor = UIColor.systemRed.cgColor
+                    self.emailTextField.borderColor = UIColor.systemRed
                 }else {
-                    self.emailTextField.layer.borderColor = UIColor.systemGray.cgColor
+                    self.emailTextField.borderColor = UIColor.systemGray
                 }
             }
             .disposed(by: disposeBag)
@@ -45,9 +50,9 @@ class ViewController: UIViewController {
             .bind { text in
                 self.loginVM.passwordValid.accept((text.count >= 6) ? true : false)
                 if text.isEmpty {
-                    self.passwordTextField.layer.borderColor = UIColor.systemRed.cgColor
+                    self.passwordTextField.borderColor = UIColor.systemRed
                 }else {
-                    self.passwordTextField.layer.borderColor = UIColor.systemGray.cgColor
+                    self.passwordTextField.borderColor = UIColor.systemGray
                 }
             }
             .disposed(by: disposeBag)
@@ -61,39 +66,35 @@ class ViewController: UIViewController {
         }
         .bind { status in
             self.loginButton.isEnabled = status
-            self.loginButton.backgroundColor = status ? .systemBlue : .gray
+            self.loginButton.backgroundColor = status ? .systemBlue : .systemGray
         }
         .disposed(by: disposeBag)
+        
     }
     
     private func configureUI() {
+        self.loginButton.layer.cornerRadius = 8
         self.emailTextField.alpha = 0.0
+        
         self.passwordTextField.alpha = 0.0
         self.loginButton.alpha = 0.0
+        
         UIView.animate(withDuration: 1.0) {
             self.emailTextField.alpha = self.animationDuration
             self.passwordTextField.alpha = self.animationDuration
             self.loginButton.alpha = self.animationDuration
         }
-        
-        self.emailTextField.layer.borderColor = UIColor.systemGray.cgColor
-        self.emailTextField.layer.cornerRadius = 8
-        self.emailTextField.layer.borderWidth = 0.8
-        self.emailTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: self.emailTextField.frame.height))
-        self.emailTextField.leftViewMode = .always
-        
-        self.passwordTextField.layer.borderColor = UIColor.systemGray.cgColor
-        self.passwordTextField.layer.cornerRadius = 8
-        self.passwordTextField.layer.borderWidth = 0.8
-        self.passwordTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: self.passwordTextField.frame.height))
-        self.passwordTextField.leftViewMode = .always
-        self.passwordTextField.isSecureTextEntry = true
-        
-        self.loginButton.layer.cornerRadius = 8
     }
     
     @IBAction func login(_ sender: Any) {
         print("tapped")
+    }
+    
+    @IBAction func signUp(_ sender: Any) {
+        guard let signUpVC = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(identifier: "SignUpVC") as? SignUpViewController else {
+            return
+        }
+        self.navigationController?.pushViewController(signUpVC, animated: true)
     }
 }
 

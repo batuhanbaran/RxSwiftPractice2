@@ -8,6 +8,7 @@ target 'Practice2' do
   # Pods for Practice2
   pod 'RxSwift', '6.2.0'
   pod 'RxCocoa', '6.2.0'
+  pod 'IQKeyboardManagerSwift'
 
   target 'Practice2Tests' do
     inherit! :search_paths
