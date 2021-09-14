@@ -87,7 +87,22 @@ class ViewController: UIViewController {
     }
     
     @IBAction func login(_ sender: Any) {
-        print("tapped")
+        if let email = self.emailTextField.text,
+           let password = self.passwordTextField.text {
+            Api.shared.login(parameters: [
+                "email": email,
+                "password": password
+            ]) { success in
+                if success {
+                    let alert = UIAlertController(title: "Bilgi", message: "Giriş Başarılı 🤗", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Tamam", style: .default, handler: nil)
+                    alert.addAction(action)
+                    self.present(alert, animated: true)
+                }else {
+                    
+                }
+            }
+        }
     }
     
     @IBAction func signUp(_ sender: Any) {

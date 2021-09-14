@@ -197,7 +197,19 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signUp(_ sender: Any) {
-        print("tapped")
+        if let name = self.fullNameTextField.text,
+           let email = self.emailTextField.text,
+           let password = self.passwordTextField.text {
+            Api.shared.register(parameters: [
+                "name": name,
+                "email": email,
+                "password": password
+            ]) { success in
+                if success {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
     }
 }
 

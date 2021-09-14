@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,10 @@
 		BD4C668A3DC58592A62E797D /* Pods_Practice2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3418F03E853FCC4EAE02ADAB /* Pods_Practice2.framework */; };
 		C3EC841D8174EBBA1DB56A52 /* Pods_Practice2_Practice2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5443C22D9CADFF315C1E7A64 /* Pods_Practice2_Practice2UITests.framework */; };
 		D8160AFB26F08E8000BABE28 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8160AFA26F08E8000BABE28 /* String+Extension.swift */; };
+		D8160B0326F0B4BE00BABE28 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D8160B0226F0B4BE00BABE28 /* Alamofire */; };
+		D8160B0626F0B4F800BABE28 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = D8160B0526F0B4F800BABE28 /* JWTDecode */; };
+		D8160B0926F0B5F000BABE28 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8160B0826F0B5F000BABE28 /* Api.swift */; };
+		D8160B0B26F0B61100BABE28 /* ApiPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8160B0A26F0B61100BABE28 /* ApiPaths.swift */; };
 		D81CB8AB26EB65AD00CFBE6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CB8AA26EB65AD00CFBE6C /* AppDelegate.swift */; };
 		D81CB8AD26EB65AD00CFBE6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CB8AC26EB65AD00CFBE6C /* SceneDelegate.swift */; };
 		D81CB8AF26EB65AD00CFBE6C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CB8AE26EB65AD00CFBE6C /* ViewController.swift */; };
@@ -52,6 +56,8 @@
 		ADF7A9C9689A67ED627A492B /* Pods-Practice2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Practice2Tests.debug.xcconfig"; path = "Target Support Files/Pods-Practice2Tests/Pods-Practice2Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		BE029BD9856C08C66EF28DC3 /* Pods-Practice2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Practice2.release.xcconfig"; path = "Target Support Files/Pods-Practice2/Pods-Practice2.release.xcconfig"; sourceTree = "<group>"; };
 		D8160AFA26F08E8000BABE28 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		D8160B0826F0B5F000BABE28 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		D8160B0A26F0B61100BABE28 /* ApiPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiPaths.swift; sourceTree = "<group>"; };
 		D81CB8A726EB65AD00CFBE6C /* Practice2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Practice2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D81CB8AA26EB65AD00CFBE6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D81CB8AC26EB65AD00CFBE6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +85,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD4C668A3DC58592A62E797D /* Pods_Practice2.framework in Frameworks */,
+				D8160B0326F0B4BE00BABE28 /* Alamofire in Frameworks */,
+				D8160B0626F0B4F800BABE28 /* JWTDecode in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +146,22 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		D8160AFF26F0B44200BABE28 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D8160B0726F0B5CE00BABE28 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				D8160B0826F0B5F000BABE28 /* Api.swift */,
+				D8160B0A26F0B61100BABE28 /* ApiPaths.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		D81CB89E26EB65AD00CFBE6C = {
 			isa = PBXGroup;
 			children = (
@@ -163,9 +187,11 @@
 		D81CB8A926EB65AD00CFBE6C /* Practice2 */ = {
 			isa = PBXGroup;
 			children = (
+				D8160B0726F0B5CE00BABE28 /* Network */,
 				D81CB8AA26EB65AD00CFBE6C /* AppDelegate.swift */,
 				D81CB8AC26EB65AD00CFBE6C /* SceneDelegate.swift */,
 				D8160AFE26F09A8D00BABE28 /* Utils */,
+				D8160AFF26F0B44200BABE28 /* Model */,
 				D8160AFD26F09A7D00BABE28 /* ViewModel */,
 				D8160AFC26F09A6C00BABE28 /* Controllers */,
 				D81CB8B026EB65AD00CFBE6C /* Main.storyboard */,
@@ -225,6 +251,10 @@
 			dependencies = (
 			);
 			name = Practice2;
+			packageProductDependencies = (
+				D8160B0226F0B4BE00BABE28 /* Alamofire */,
+				D8160B0526F0B4F800BABE28 /* JWTDecode */,
+			);
 			productName = Practice2;
 			productReference = D81CB8A726EB65AD00CFBE6C /* Practice2.app */;
 			productType = "com.apple.product-type.application";
@@ -299,6 +329,10 @@
 				Base,
 			);
 			mainGroup = D81CB89E26EB65AD00CFBE6C;
+			packageReferences = (
+				D8160B0126F0B4BE00BABE28 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				D8160B0426F0B4F800BABE28 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */,
+			);
 			productRefGroup = D81CB8A826EB65AD00CFBE6C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -445,12 +479,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8160B0926F0B5F000BABE28 /* Api.swift in Sources */,
 				D8160AFB26F08E8000BABE28 /* String+Extension.swift in Sources */,
 				D81CB8DB26EB695C00CFBE6C /* LoginViewModel.swift in Sources */,
 				D81CB8AF26EB65AD00CFBE6C /* ViewController.swift in Sources */,
 				D81CB8AB26EB65AD00CFBE6C /* AppDelegate.swift in Sources */,
 				D83B491426ECE356000A5870 /* AuthTextField.swift in Sources */,
 				D81CB8AD26EB65AD00CFBE6C /* SceneDelegate.swift in Sources */,
+				D8160B0B26F0B61100BABE28 /* ApiPaths.swift in Sources */,
 				D83B491226ECDFD6000A5870 /* SignUpViewController.swift in Sources */,
 				D83B491626ECF8BB000A5870 /* SignUpViewModel.swift in Sources */,
 			);
@@ -791,6 +827,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D8160B0126F0B4BE00BABE28 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.3;
+			};
+		};
+		D8160B0426F0B4F800BABE28 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/JWTDecode.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D8160B0226F0B4BE00BABE28 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D8160B0126F0B4BE00BABE28 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		D8160B0526F0B4F800BABE28 /* JWTDecode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D8160B0426F0B4F800BABE28 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */;
+			productName = JWTDecode;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D81CB89F26EB65AD00CFBE6C /* Project object */;
 }
